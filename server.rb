@@ -8,12 +8,18 @@ configure {
   set :port, port
 }
 
+# Route for the root URL
 get '/' do
   content_type "text/plain"
   message = params[:message]
-  if message == nil
+  if message.nil?
     message = "Set a message by adding ?message=<message here> to the URL"
   end
 
   Cowsay.say(message, "random")
+end
+
+# Route for /hi that returns "hi"
+get '/hi' do
+  "hi"
 end
